@@ -9,6 +9,7 @@ const mongoOptions = require('./mongoConfig');
 const ENVIRONMENT = process.env.NODE_ENV;
 const MONGODB_URI = process.env.MONGODB_URI;
 const { troll } = require('./src/commands/troll');
+const { entraron } = require('./src/commands/entraron');
 
 
 (function connect () {
@@ -38,9 +39,18 @@ client.on('message', async (message) => {
             .substring(PREFIX.length)
             .split(' ');
         logger.debug(command);
-        const user = [...args][0];
-        logger.debug(user);
-        message.channel.send(await troll({user}));
+        if (command.startsWith('troll')){
+            const user = [...args][0];
+            logger.debug(user);
+            message.channel.send(await troll({user}));
+        }
+        if (command.startsWith('hizoentrar')){
+            const user = [...args][0];
+            const victima = [...args][1];
+            logger.debug(user);
+            logger.debug(victima);
+            message.channel.send(await entraron({user},{user: victima}));
+        }
     }
 })
 

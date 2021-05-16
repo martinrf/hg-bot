@@ -1,0 +1,8 @@
+version: "2"
+services:
+  app:
+    container_name: hg-bot
+    restart: always
+    build: .
+    volumes:
+      - ../volumes/hg-bot/logs:/app/logs
