@@ -31,7 +31,7 @@ client.on('ready', () => {
 });
 
 client.on('message', async (message) => {
-    logger.info(message.content);
+    logger.debug(message.content);
     if (message.author.bot) return;
     if (message.content.startsWith(PREFIX)){
         const [command, ...args] = message.content
@@ -40,11 +40,13 @@ client.on('message', async (message) => {
             .split(' ');
         logger.debug(command);
         if (command.startsWith('troll')){
+            logger.info('troll command executed');
             const user = [...args][0];
             logger.debug(user);
             message.channel.send(await troll({user}));
         }
         if (command.startsWith('hizoentrar')){
+            logger.info('hizoentrar command executed');
             const user = [...args][0];
             const victima = [...args][1];
             logger.debug(user);
