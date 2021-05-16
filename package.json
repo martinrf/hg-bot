@@ -1,0 +1,32 @@
+{
+  "name": "hgbot",
+  "version": "0.0.1",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js",
+    "test": "jest",
+    "lint": "eslint src/**/*.js util/**/*.js"
+  },
+  "keywords": [
+    "discord",
+    "bot",
+    "vtm",
+    "utilities"
+  ],
+  "author": "Martin Rodriguez",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^12.5.3",
+    "dotenv": "^9.0.2",
+    "mongoose": "^5.12.9",
+    "os": "^0.1.1",
+    "winston": "^3.3.3",
+    "winston-daily-rotate-file": "^4.5.5"
+  },
+  "devDependencies": {
+    "eslint": "^7.26.0",
+    "nodemon": "^2.0.7"
+  }
+}
