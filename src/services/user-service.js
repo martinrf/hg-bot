@@ -5,7 +5,7 @@ class UserService {
     async create(user) {
         try {
             const userModel = new UserModel(user);
-            const operation = await userModel.save();
+            await userModel.save();
             return userModel;
         } catch (e) {
             logger.error(e);

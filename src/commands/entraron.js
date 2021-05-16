@@ -1,11 +1,12 @@
+// TODO: refactor this to remove duplicates
 const userService = require('../services/user-service');
 
 const userLookup = async (user) => {
     // TODO Clean this mess
     const userModel = await userService.find(user);
     if (userModel)
-        return userModel
-    return await userService.create(user)
+        return userModel;
+    return await userService.create(user);
 };
 
 const incrementEntraronCounter = async (user) => {
