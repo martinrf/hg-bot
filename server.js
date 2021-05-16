@@ -29,7 +29,7 @@ client.on('ready', () => {
     logger.info(`Debug level set to '${process.env.LOG_LEVEL}'`)
 });
 
-client.on('message', (message) => {
+client.on('message', async (message) => {
     logger.info(message.content);
     if (message.author.bot) return;
     if (message.content.startsWith(PREFIX)){
@@ -40,7 +40,7 @@ client.on('message', (message) => {
         logger.debug(command);
         const user = [...args][0];
         logger.debug(user);
-        message.channel.send(troll({user}));
+        message.channel.send(await troll({user}));
     }
 })
 

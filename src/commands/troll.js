@@ -2,10 +2,10 @@ const userService = require('../services/user-service');
 
 const userLookup = async (user) => {
     // TODO Clean this mess
-    const userModel = await userService.find({ user });
+    const userModel = await userService.find(user);
     if (userModel)
         return userModel
-    return await userService.create({user})
+    return await userService.create(user)
 };
 
 const incrementTrollCounter = async (user) => {
@@ -19,20 +19,20 @@ const updateUserModel = async (user) => {
 };
 
 const findUserToIncrement = async (user) => {
-    return await incrementTrollCounter(userLookup(user));
+    return await incrementTrollCounter(await userLookup(user));
 };
 
 const userAfterCount = async (user) => {
-    return await updateUserModel(findUserToIncrement(user));
+    return await updateUserModel(await findUserToIncrement(user));
 };
 
 const trollCounterOf = async (user) => {
     return (await userAfterCount(user)).troll_counter;
 };
 
-const troll = async (user) => {
+const troll = async (userModel) => {
     // TODO: Template processing
-    return `${user} esta es tu trolleada numero: ${await trollCounterOf(user)}`;
+    return `${userModel.user} esta es tu trolleada numero: ${await trollCounterOf(userModel)}`;
 };
 
 
